@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.scheduleclassification.Tutorial$PlaceholderFragment" >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recoverable schedule:"
+        android:textStyle="bold"
+     />
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="One where no transaction needs to be rolled back.A schedule S is recoverable if no transaction T in S commits until all transactions T’ that have written an item that T reads have committed.\n"
+     />
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cascadeless schedule:"
+         android:textStyle="bold"
+     />
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="One where every transaction reads only  the items that are written by committed transactions.\n"
+     />
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Strict Schedules:"
+         android:textStyle="bold"
+     />
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A schedule in which a transaction can neither read or write an item X until the last transaction that wrote X has committed.\n "
+     />
+
+</LinearLayout>
