@@ -188,22 +188,30 @@ public class TransactionActivity extends FragmentActivity {
 			View rootView = inflater.inflate(R.layout.fragment_transaction_dummy, container, false);
 			tbl=(TableLayout) rootView.findViewById(R.id.tableLayout1);
 			//Processing done here
+		    tbl.setStretchAllColumns(true);
+		    tbl.setWeightSum(no_of_transaction);
+
+			tbl.setStretchAllColumns(true);
+//			tbl.setWeightSum(no_of_transaction);
 			savebutton=(Button) rootView.findViewById(R.id.transactionSavebutton);
 			savebutton.setOnClickListener(this);
 			next=(Button) rootView.findViewById(R.id.transactionUndobutton);
 			next.setOnClickListener(this);
+			TableRow.LayoutParams tabler=new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT, 1.0f);
+			TableRow.LayoutParams items=new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.FILL_PARENT);
 			TableRow tableRow = new TableRow(cont);
+			tableRow.setLayoutParams(tabler);
 			tableRow.setPadding(5, 10, 5, 20);
 			addtransactions();
 			for(int k=0;k<col.size();k++)
 			{
 				TextView ed = new TextView(cont);
 				ed.setId(k);   
-				ed.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+				ed.setLayoutParams(items);
 				ed.setText(col.get(k).toString());
 				ed.setPadding(5, 5, 5, 5);
 				ed.setGravity(Gravity.CENTER);
-				ed.setBackgroundColor(color.darker_gray);
+				ed.setBackgroundResource(R.drawable.rect);
 				ed.setTextSize(20);
 				tableRow.addView(ed);
 			}
@@ -212,12 +220,13 @@ public class TransactionActivity extends FragmentActivity {
 			{
 				tableRow = new TableRow(getActivity());
 				tableRow.setPadding(5, 10, 5, 0);
+				tableRow.setLayoutParams(tabler);
 				for(int j=0;j<no_of_transaction;j++)
 				{
 
 					TextView ed = new TextView(getActivity());
 					ed.setId(j);   
-					ed.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+					ed.setLayoutParams(items);
 					if(schedule.get(i).transaction==j+1)
 					{
 						ed.setText(schedule.get(i).toString());
@@ -226,6 +235,7 @@ public class TransactionActivity extends FragmentActivity {
 						ed.setText("");
 					ed.setTextSize(20);
 					ed.setPadding(5, 5, 5, 5);
+					ed.setBackgroundResource(R.drawable.rect);
 					ed.setGravity(Gravity.CENTER);
 					fields.add(ed);
 					tableRow.addView(ed);

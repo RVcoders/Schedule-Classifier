@@ -289,7 +289,7 @@ public class MainActivity extends Activity implements TokenListener,MultiSpinner
 	public void setnooftrans()
 	{
 		nooftrans=new ArrayList<Integer>();
-		for(int i=2;i<20;i++)
+		for(int i=2;i<10;i++)
 			nooftrans.add(i);
 
 	}
