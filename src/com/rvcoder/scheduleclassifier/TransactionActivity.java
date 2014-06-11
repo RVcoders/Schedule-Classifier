@@ -128,9 +128,9 @@ public class TransactionActivity extends FragmentActivity {
 			Locale l = Locale.getDefault();
 			switch (position) {
 			case 0:
-				return "Transaction Processing";//getString(R.string.title_section1).toUpperCase(l);
+				return "Transaction Processing".toUpperCase(l);
 			case 1:
-				return "Transaction Items";//getString(R.string.title_section2).toUpperCase(l);
+				return "Transaction Items".toUpperCase(l);
 			}
 			return null;
 		}
@@ -138,25 +138,23 @@ public class TransactionActivity extends FragmentActivity {
 		@Override
 		public void onPageScrollStateChanged(int arg0) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void onPageScrolled(int arg0, float arg1, int arg2) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void onPageSelected(int arg0) {
 			// TODO Auto-generated method stub
-		if(arg0==1)
-		{
-			
-			canvas.setHighlight(highlight);
-			canvas.draw(can);
-			//canvas.drawCircle(can);
-		}
+			if(arg0==1)
+			{
+				canvas.setHighlight(highlight);
+				canvas.draw(can);
+			}
 		}
 	}
 
@@ -179,9 +177,9 @@ public class TransactionActivity extends FragmentActivity {
 		Context cont;
 		Button savebutton,next;
 		@SuppressLint("ValidFragment")
-		public DummySectionFragment(Context con) {
+		public DummySectionFragment(Context con) 
+		{
 			cont=con;
-
 		}
 
 		@Override
@@ -201,7 +199,7 @@ public class TransactionActivity extends FragmentActivity {
 			{
 				TextView ed = new TextView(cont);
 				ed.setId(k);   
-				//ed.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+				ed.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
 				ed.setText(col.get(k).toString());
 				ed.setPadding(5, 5, 5, 5);
 				ed.setGravity(Gravity.CENTER);
@@ -219,7 +217,7 @@ public class TransactionActivity extends FragmentActivity {
 
 					TextView ed = new TextView(getActivity());
 					ed.setId(j);   
-					//ed.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
+					ed.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
 					if(schedule.get(i).transaction==j+1)
 					{
 						ed.setText(schedule.get(i).toString());
@@ -271,12 +269,13 @@ public class TransactionActivity extends FragmentActivity {
 					row.getChildAt(1).setFocusable(true);
 					tbl.getChildAt(highlight+1).setBackgroundColor(getResources().getColor(android.R.color.holo_blue_dark));
 					highlight++;
+					break;
+
 				}
 				else
 				{
 					mViewPager.setCurrentItem(1, true);
 				}
-				break;
 			}
 			//schedule
 
@@ -298,7 +297,6 @@ public class TransactionActivity extends FragmentActivity {
 				{
 					Toast.makeText(contextglobal,"This Schedule is Recoverable", Toast.LENGTH_SHORT).show();
 				}
-
 				else if(recoverable && cascadeless && !strict )
 				{
 					Toast.makeText(contextglobal,"This Schedule is Cascadeless", Toast.LENGTH_SHORT).show();
@@ -307,11 +305,10 @@ public class TransactionActivity extends FragmentActivity {
 				{
 					Toast.makeText(contextglobal,"This Schedule is Strict", Toast.LENGTH_SHORT).show();
 				}
+				highlight=tbl.getChildCount()-1;
 				mViewPager.setCurrentItem(1, true);
 				break;
 			}
-			
-
 			}
 		}
 	}
@@ -335,11 +332,11 @@ public class TransactionActivity extends FragmentActivity {
 			View rootView = inflater.inflate(
 					R.layout.trans, container, false);
 			lin=(LinearLayout) rootView.findViewById(R.id.canvas);
-			 can=new Canvas();
-		
+			can=new Canvas();
+
 			canvas=new CanvasView(cont,schedule,no_of_transaction,highlight);
-	//		canvas.setHighlight(highlight);
-//			canvas.drawCircle(can);
+			//		canvas.setHighlight(highlight);
+			//			canvas.drawCircle(can);
 			lin.addView(canvas);
 			//b=(Button) rootView.findViewById(R.id.resultbutton);
 			//b.setOnClickListener(this);
